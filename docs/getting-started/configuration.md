@@ -1,10 +1,37 @@
 ---
-sidebar_position: 1
+## sidebar_position: 1
 ---
 
-# Tutorial Intro
+# Configuration Your Frontend Project
 
 Let's discover **Docusaurus in less than 5 minutes**.
+
+````mdx-code-block
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+<Tabs
+  defaultValue="bash"
+  values={[
+    { label: 'Bash', value: 'bash' },
+    { label: 'Windows', value: 'windows' }
+]}>
+  <TabItem value="bash">
+
+  ```bash
+  GIT_USER=<GITHUB_USERNAME> yarn deploy
+  ```
+
+  </TabItem>
+  <TabItem value="windows">
+
+  ```batch
+  cmd /C "set "GIT_USER=<GITHUB_USERNAME>" && yarn deploy"
+  ```
+
+  </TabItem>
+</Tabs>
+````
 
 ## Getting Started
 
