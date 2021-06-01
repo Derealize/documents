@@ -1,0 +1,84 @@
+# Configuration Derealize to your Next.js project
+
+### step 1: import derealize babel plugin
+
+````mdx-code-block
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+<Tabs
+  defaultValue="npm"
+  values={[
+    { label: 'npm', value: 'npm' },
+    { label: 'yarn', value: 'yarn' }
+]}>
+  <TabItem value="npm">
+
+  ```bash
+  npm install --save-dev @derealize/babel-plugin-transform-react
+  ```
+
+  </TabItem>
+  <TabItem value="yarn">
+
+  ```bash
+  yarn add --dev @derealize/babel-plugin-transform-react
+  ```
+
+  </TabItem>
+</Tabs>
+````
+
+```json title="./.babelrc"
+{
+  "presets": ["next/babel"],
+  "plugins": ["@derealize/transform-react"]
+}
+```
+
+### step 2: config tailwindcss
+
+```js title="./tailwind.config.js" {2,6}
+module.exports = {
+  mode: "jit",
+  purge: [
+    "./pages/**/*.{js,ts,jsx,tsx}",
+    "./components/**/*.{js,ts,jsx,tsx}",
+    "./derealize-jit.html",
+  ],
+  ...
+}
+```
+
+### step 3: config derealize
+
+```js title="./package.json" {5}
+  ...
+  "scripts": {
+    "dev": "next dev -p 3001",
+    "build": "next build",
+    "start": "next start",
+    "format": "prettier --write **/*.{js,jsx,ts,tsx} --config ./.prettierrc"
+  },
+  "derealize": {
+    "runScript": "dev",
+    "formatScript": "format",
+    "baseUrl": "http://localhost:3001",
+    "port": 3001,
+    "pages": [
+      "/",
+      "/Welcome",
+      ...
+    ],
+    "assetsPath": "./public/assets",     // save your images
+    "assetsUrl": "/assets",              // public path of the images
+    "applyCssFile": "styles/globals.css" // entry css file, so derealize can be parsed @apply
+  },
+  ...
+```
+
+:::info
+The npm script 'format' is not required, but we think you will definitely need it. to prevent improperly formatting your react code every time 'drealize' updates it.
+:::
+
+That's enough!
