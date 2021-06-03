@@ -1,6 +1,8 @@
-# Configuration Derealize to your Next.js project
+# Configuration your Next.js project
 
-### step 1: import derealize babel plugin
+### 0: [Install Tailwind CSS](https://tailwindcss.com/docs/guides/nextjs)
+
+### 1: Import derealize babel plugin
 
 ````mdx-code-block
 import Tabs from '@theme/Tabs';
@@ -36,7 +38,7 @@ import TabItem from '@theme/TabItem';
 }
 ```
 
-### step 2: config tailwindcss
+### 2: Config tailwindcss
 
 ```js title="./tailwind.config.js" {2,6}
 module.exports = {
@@ -50,9 +52,9 @@ module.exports = {
 }
 ```
 
-### step 3: config derealize
+### 3: Config derealize
 
-```js title="./package.json" {5}
+```js title="./package.json" {6,8-21}
   ...
   "scripts": {
     "dev": "next dev -p 3001",
@@ -70,15 +72,45 @@ module.exports = {
       "/Welcome",
       ...
     ],
-    "assetsPath": "./public/assets",     // save your images
-    "assetsUrl": "/assets",              // public path of the images
-    "applyCssFile": "styles/globals.css" // entry css file, so derealize can be parsed @apply
+    "assetsPath": "./static/assets",       // save your images
+    "assetsUrl": "/assets",                // public path of the images
+    "applyCssFile": "./styles/globals.css" // entry css file, so derealize can be parsed @apply
   },
   ...
 ```
 
-:::info
+:::note
 The npm script 'format' is not required, but we think you will definitely need it. to prevent improperly formatting your react code every time 'drealize' updates it.
 :::
 
-That's enough!
+### 4: Handle the routeChangeComplete event
+
+```js title="./pages/_app.js" {8-22}
+import { useEffect } from "react";
+import { useRouter } from "next/router";
+import "../styles/globals.css";
+
+function MyApp({ Component, pageProps }) {
+  const router = useRouter();
+
+  useEffect(() => {
+    if (typeof window === "undefined" || !window.derealize) return;
+
+    const handleRouteChange = (url, { shallow }) => {
+      window.derealize.listenElement();
+    };
+
+    router.events.on("routeChangeComplete", handleRouteChange);
+
+    return () => {
+      router.events.off("routeChangeComplete", handleRouteChange);
+    };
+  }, []);
+
+  return <Component {...pageProps} />;
+}
+
+export default MyApp;
+```
+
+That's enough! [start enjoying](./import) the derealize application.
