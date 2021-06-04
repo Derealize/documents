@@ -1,56 +1,104 @@
+# Configuration your Gatsby project
+
+### 0. [Install Tailwind CSS](https://tailwindcss.com/docs/guides/gatsby)
+
+### 1. Import derealize babel plugin
+
 ````mdx-code-block
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
 <Tabs
-  defaultValue="bash"
+  defaultValue="npm"
   values={[
-    { label: 'Bash', value: 'bash' },
-    { label: 'Windows', value: 'windows' }
+    { label: 'npm', value: 'npm' },
+    { label: 'yarn', value: 'yarn' }
 ]}>
-  <TabItem value="bash">
+  <TabItem value="npm">
 
   ```bash
-  GIT_USER=<GITHUB_USERNAME> yarn deploy
+  npm install --save-dev babel-preset-gatsby @derealize/babel-plugin-transform-react
   ```
 
   </TabItem>
-  <TabItem value="windows">
+  <TabItem value="yarn">
 
-  ```batch
-  cmd /C "set "GIT_USER=<GITHUB_USERNAME>" && yarn deploy"
+  ```bash
+  yarn add --dev babel-preset-gatsby @derealize/babel-plugin-transform-react
   ```
 
   </TabItem>
 </Tabs>
 ````
 
-Installing Tailwind CSS can be a slightly different process depending on what other frameworks/tools you’re using, so we’ve put together a bunch of guides that cover popular setups.
-
-## Getting Started
-
-Get started by **creating a new site**.
-
-Or **try Docusaurus immediately** with **[new.docusaurus.io](https://new.docusaurus.io)**.
-
-## Generate a new site
-
-Generate a new Docusaurus site using the **classic template**:
-
-```shell
-npx @docusaurus/init@latest init my-website classic
+```json title="./.babelrc"
+{
+  "plugins": ["@derealize/transform-react"],
+  "presets": [
+    [
+      "babel-preset-gatsby",
+      {
+        "targets": {
+          "browsers": [">0.25%", "not dead"]
+        }
+      }
+    ]
+  ]
+}
 ```
 
-## Start your site
+:::note
+about babel-preset-gatsby, refer to the [gatsby](https://www.gatsbyjs.com/docs/how-to/custom-configuration/babel/#how-to-use-a-custom-babelrc-file) document
+:::
 
-Run the development server:
+### 2. Config tailwindcss
 
-```shell
-cd my-website
-
-npx docusaurus start
+```js title="./tailwind.config.js" {2,5}
+module.exports = {
+  mode: "jit",
+  purge: [
+    "./src/**/*.{js,jsx,ts,tsx}",
+    "./derealize-jit.html"
+  ],
+  ...
+}
 ```
 
-Your site starts at `http://localhost:3000`.
+### 3. Config derealize
 
-Open `docs/intro.md` and edit some lines: the site **reloads automatically** and display your changes.
+```js title="./package.json" {8,10-23}
+  ...
+"scripts": {
+    "develop": "gatsby develop",
+    "start": "gatsby develop",
+    "build": "gatsby build",
+    "serve": "gatsby serve",
+    "clean": "gatsby clean",
+    "format": "prettier --write **/*.{js,jsx,ts,tsx} --config ./.prettierrc"
+  },
+  "derealize": {
+    "runScript": "develop",
+    "formatScript": "format",
+    "baseUrl": "http://localhost:8000",
+    "port": 8000,
+    "pages": [
+      "/",
+      "/Welcome",
+      ...
+    ],
+    "assetsPath": "./public/assets",            // save your images
+    "assetsUrl": "/assets",                     // public path of the images
+    "applyCssFile": "./src/styles/globals.css"  // entry css file, so derealize can be parsed @apply
+  },
+  ...
+```
+
+:::note
+The npm script 'format' is not required, but we think you will definitely need it. to prevent improperly formatting your react code every time 'drealize' updates it.
+:::
+
+That's enough! [start enjoying](./import) the derealize application.
+
+:::tip
+If the installation process is not successful, you can refer to our [template](https://github.com/Derealize/gatsby-template) project
+:::
