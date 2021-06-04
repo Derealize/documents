@@ -24,15 +24,36 @@ module.exports = {
       label: "Getting Started",
       collapsed: false,
       items: [
-        "guides/configuration",
-        "guides/import",
         {
-          type: "ref",
-          id: "guides/creat-react-app",
+          type: "doc",
+          id: "guides/configuration",
+          label: "Configuration Project",
         },
         {
-          type: "ref",
-          id: "guides/nextjs",
+          type: "category",
+          label: "Frameworks",
+          items: [
+            {
+              type: "ref",
+              label: "creat-react-app",
+              id: "guides/creat-react-app",
+            },
+            {
+              type: "ref",
+              label: "nextjs",
+              id: "guides/nextjs",
+            },
+            {
+              type: "ref",
+              label: "gatsby",
+              id: "guides/gatsby",
+            },
+          ]
+        },
+        {
+          type: "doc",
+          id: "guides/import",
+          label: "Import Project",
         },
       ],
     },
