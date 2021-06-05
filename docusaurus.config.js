@@ -81,6 +81,7 @@ module.exports = {
     //   additionalLanguages: ["php", "ruby"],
     // },
   },
+  plugins: ['docusaurus-plugin-sass'],
   presets: [
     [
       "@docusaurus/preset-classic",
@@ -92,7 +93,7 @@ module.exports = {
           showReadingTime: true,
         },
         theme: {
-          customCss: require.resolve("./src/css/custom.css"),
+          customCss: require.resolve("./src/css/custom.scss"),
         },
       },
     ],
