@@ -48,7 +48,37 @@ module.exports = {
               label: "gatsby",
               id: "guides/gatsby",
             },
-          ]
+          ],
+        },
+        {
+          type: "doc",
+          id: "guides/import",
+          label: "Import Project",
+        },
+      ],
+    },
+    {
+      type: "category",
+      label: "reference",
+      items: [
+        {
+          type: "category",
+          label: "Layout",
+          items: [
+            "reference/layout/display",
+            "reference/layout/position",
+            "reference/layout/flex",
+            "reference/layout/grid",
+            "reference/layout/float",
+            "reference/layout/visibility",
+            "reference/layout/boxSizing",
+            "reference/layout/overflow",
+            "reference/layout/overscroll",
+            "reference/layout/zIndex",
+            "reference/layout/container",
+            "reference/layout/objectFit",
+            "reference/layout/objectPosition",
+          ],
         },
         {
           type: "doc",
