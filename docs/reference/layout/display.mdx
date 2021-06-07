@@ -1,22 +1,7 @@
 # display
 
 ```mdx-code-block
-import React from 'react'
-import ReactDOM from 'react-dom'
-import store from '../../../src/reduxStore'
-import { DisplayValues } from '../../../src/models/controlles/layout'
-import useComputeProperty from '../../../src/components/useComputeProperty'
+import Display from '../../../src/components/layout/display.tsx'
 
-const Display: React.FC = (): JSX.Element => {
-  const propertys = useStoreState<Array<Property>>((state) => state.layout.displayPropertys)
-  const property = useComputeProperty(propertys)
-
-  return <SelectController placeholder="display" values={DisplayValues} property={property} onMouseEnter={false} />
-}
-
-<React.StrictMode>
-  <StoreProvider store={store}>
-    <Display />
-  </StoreProvider>
-</React.StrictMode>
+<Display />
 ```

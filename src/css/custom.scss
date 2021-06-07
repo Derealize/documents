@@ -41,3 +41,10 @@
 .frameworks > a.framework > .framework-name {
   margin-top: 10px;
 }
+
+.playground {
+  resize: both;
+  overflow: auto;
+}
+
+@import "layout";

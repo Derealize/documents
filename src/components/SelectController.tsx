@@ -1,8 +1,5 @@
 /* eslint-disable react/jsx-props-no-spreading */
-import React, { useMemo, useState, useCallback } from "react";
-// import clone from 'lodash.clone' // 巨坑：不是100%的clone，导致liveUpdateClassName更新了state对象
-import clone from "lodash.clonedeep";
-import { Icon } from "@chakra-ui/react";
+import React from "react";
 import Select, {
   GroupTypeBase,
   OptionTypeBase,
@@ -15,16 +12,10 @@ import Select, {
   IndicatorContainerProps,
   SingleValueProps,
   components,
-  GroupProps,
-  MenuProps,
 } from "react-select";
 import { CSSObject } from "@emotion/serialize";
-import { AiOutlineControl, AiFillControl } from "react-icons/ai";
-import styles from "./SelectController.module.scss";
 import { useStoreActions, useStoreState } from "../reduxStore";
-import type { Project, Colors } from "../models/project.interface";
-import type { ElementState } from "../models/element";
-import type { Property } from "../models/controlles/controlles";
+import styles from "./SelectController.module.scss";
 import theme from "../theme";
 
 export interface OptionType extends OptionTypeBase {
@@ -41,21 +32,13 @@ const formatGroupLabel = (data: GroupTypeBase<OptionType>) => (
   </div>
 );
 
-const Group = (props: GroupProps<OptionType, boolean, GroupType>) => (
-  <div className={styles.colorGroup}>
-    <components.Group {...props} />
-  </div>
-);
-
 type Props = {
   placeholder: string;
   values: ReadonlyArray<string | OptionType | GroupType>;
-  property: Property | undefined;
+  property: string | undefined;
   isDisabled?: boolean;
-  colors?: Colors;
-  colorsTheme?: string;
   onMouseEnter?: boolean;
-  cleanPropertys?: Array<Property>;
+  cleanPropertys?: Array<string>;
 };
 
 const SelectController: React.FC<Props> = ({
@@ -63,105 +46,27 @@ const SelectController: React.FC<Props> = ({
   values,
   property,
   isDisabled,
-  colors,
-  colorsTheme,
   onMouseEnter,
-  cleanPropertys,
 }: Props): JSX.Element => {
-  const project = useStoreState<Project | undefined>(
-    (state) => state.project.frontProject
-  );
-  const element = useStoreState<ElementState | undefined>(
-    (state) => state.element.activeElement
-  );
+  // const className = useStoreState((state) => state.controlles.className);
+  const setClassName = useStoreActions((actions) => actions.controlles.setClassName);
 
-  const toggleColorsModal = useStoreActions(
-    (actions) => actions.project.colorsModalToggle
-  );
-
-  const jitClassNames = useStoreActions(
-    (actions) => actions.controlles.jitClassNames
-  );
-  const deleteProperty = useStoreActions(
-    (actions) => actions.element.deleteActiveElementProperty
-  );
-  const setActiveElementPropertyClassName = useStoreActions(
-    (actions) => actions.element.setActiveElementPropertyClassName
-  );
-  const pushNewProperty = useStoreActions(
-    (actions) => actions.controlles.pushNewProperty
-  );
-  const liveUpdateClassName = useStoreActions(
-    (actions) => actions.controlles.liveUpdateClassName
-  );
-  const liveApplyClassName = useStoreActions(
-    (actions) => actions.controlles.liveApplyClassName
-  );
-
-  const propertysClone = useMemo(() => {
-    const clean = cleanPropertys?.map((p) => p.id) || [];
-    const result = element?.propertys?.filter((p) => !clean.includes(p.id));
-    return clone(result);
-  }, [cleanPropertys, element?.propertys]);
-
-  const onOptionEnter = useCallback(
-    async (value: string) => {
-      if (!project || !propertysClone) return;
-      liveUpdateClassName({
-        propertysClone,
-        propertyId: property?.id || "",
-        classname: value,
-        projectId: project.id,
-      });
-    },
-    [project, liveUpdateClassName, propertysClone, property?.id]
-  );
-
-  const Option = (props: OptionProps<OptionType, boolean, GroupType>) => {
+  const MouseEnterOption = (props: OptionProps<OptionType, boolean, GroupType>) => {
     const {
       data: { label, value },
     } = props;
 
     return (
-      <div
-        className={colors ? styles.colorOption : undefined}
-        style={colors ? { backgroundColor: label } : undefined}
-        onMouseEnter={() => onOptionEnter(value)}
-      >
+      <div onMouseEnter={() => setClassName(value)}>
         <components.Option {...props} />
       </div>
-    );
-  };
-
-  const Menu = (props: MenuProps<OptionType, boolean, GroupType>) => {
-    const { children } = props;
-    return (
-      <>
-        <components.Menu {...props}>
-          <>
-            <div className={styles.controls}>
-              <Icon
-                as={AiOutlineControl}
-                boxSize={6}
-                onClick={() =>
-                  toggleColorsModal({ show: true, colors, theme: colorsTheme })
-                }
-              />
-              {/* <Icon as={AiFillControl} boxSize={6} onClick={() => toggleColorsModal({ show: true })} /> */}
-            </div>
-            {children}
-          </>
-        </components.Menu>
-      </>
     );
   };
 
   return (
     <Select
       components={{
-        Option: onMouseEnter ? Option : components.Option,
-        Group: colors ? Group : components.Group,
-        Menu: colors ? Menu : components.Menu,
+        Option: onMouseEnter ? MouseEnterOption : components.Option,
       }}
       placeholder={placeholder}
       isClearable
@@ -177,49 +82,14 @@ const SelectController: React.FC<Props> = ({
             }))
           : (values as ReadonlyArray<OptionType | GroupType>)
       }
-      value={
-        property
-          ? { value: property.classname, label: property.classname }
-          : null
-      }
+      value={property ? { value: property, label: property } : null}
       formatGroupLabel={formatGroupLabel}
-      onFocus={() => {
-        if (!project || !values.length) return;
-
-        const classNames: Array<string> =
-          typeof values[0] === "string"
-            ? (values as ReadonlyArray<string>)
-            : (values as ReadonlyArray<OptionType | GroupType>)
-                .map((v) => v.options)
-                .reduce((pre, cur) => pre.concat(cur))
-                .map((o: OptionType) => o.value);
-
-        jitClassNames({ project, classNames });
-      }}
-      onBlur={() => {
-        liveApplyClassName();
-      }}
       onChange={(ovalue, { action }) => {
-        if (!project) return;
         if (action === "clear" && property) {
-          deleteProperty({ projectId: project.id, propertyId: property.id });
+          setClassName("");
         } else if (action === "select-option") {
-          const classname = (ovalue as OptionType).value;
-          if (property) {
-            setActiveElementPropertyClassName({
-              projectId: project.id,
-              propertyId: property.id,
-              classname,
-            });
-          } else {
-            pushNewProperty(classname);
-          }
+          setClassName((ovalue as OptionType).value);
         }
-        cleanPropertys?.forEach(
-          (p) =>
-            p && deleteProperty({ projectId: project.id, propertyId: p.id })
-        );
-        liveApplyClassName();
       }}
       className={styles.select}
       styles={{
@@ -245,10 +115,7 @@ const SelectController: React.FC<Props> = ({
           height: 30,
           justifyContent: "center",
         }),
-        control: (
-          provided: CSSObject,
-          state: ControlProps<OptionType, boolean, GroupType>
-        ) => {
+        control: (provided: CSSObject, state: ControlProps<OptionType, boolean, GroupType>) => {
           // state.isFocused
           return {
             ...provided,
@@ -257,9 +124,7 @@ const SelectController: React.FC<Props> = ({
             border: "none",
             // borderBottom: `1px solid ${property ? theme.colors.teal['400'] : theme.colors.gray['200']}`,
             borderBottom: `1px solid ${
-              state.isFocused && property
-                ? theme.colors.teal["500"]
-                : "transparent"
+              state.isFocused && property ? theme.colors.teal["500"] : "transparent"
             }`,
             cursor: "pointer",
             minHeight: undefined,
@@ -270,10 +135,7 @@ const SelectController: React.FC<Props> = ({
             },
           };
         },
-        singleValue: (
-          provided: CSSObject,
-          props: SingleValueProps<OptionType, GroupType>
-        ) => ({
+        singleValue: (provided: CSSObject, props: SingleValueProps<OptionType, GroupType>) => ({
           ...provided,
           margin: 0,
           color: property ? theme.colors.teal["500"] : theme.colors.gray["400"],
@@ -296,10 +158,7 @@ const SelectController: React.FC<Props> = ({
           ...provided,
           margin: 0,
         }),
-        option: (
-          provided: CSSObject,
-          props: OptionProps<OptionType, boolean, GroupType>
-        ) => ({
+        option: (provided: CSSObject, props: OptionProps<OptionType, boolean, GroupType>) => ({
           ...provided,
           padding: "4px 8px",
         }),
@@ -310,10 +169,7 @@ const SelectController: React.FC<Props> = ({
 
 SelectController.defaultProps = {
   isDisabled: false,
-  colors: undefined,
-  colorsTheme: "",
   onMouseEnter: true,
-  cleanPropertys: [],
 };
 
 export default SelectController;
