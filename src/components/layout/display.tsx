@@ -1,11 +1,7 @@
 import React from "react";
-import tw from "twin.macro";
-// ts-type unsupport 'css'
-// import tw, { css } from "twin.macro";
 import { useStoreActions, useStoreState } from "../../reduxStore";
 import SelectController from "../SelectController";
-
-const Input = tw.input`border hover:border-black`;
+import "../../css/layout.scss";
 
 export const DisplayValues = [
   "block",
@@ -32,7 +28,6 @@ export const DisplayValues = [
 ];
 
 // wait CSS-in-JS: https://docusaurus.io/docs/styling-layout#css-in-js
-// or twin.macro ts-type support for 'css'  https://github.com/ben-rogerson/twin.macro
 
 const Display: React.FC = (): JSX.Element => {
   const className = useStoreState<string>((state) => state.controlles.className);
@@ -46,7 +41,7 @@ const Display: React.FC = (): JSX.Element => {
         onMouseEnter={false}
       />
 
-      <div className="playground pg-display" tw={className}>
+      <div className={`playground pg-display ${className}`}>
         <article>
           <span>First</span>
           <span>Second</span>

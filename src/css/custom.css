@@ -47,4 +47,6 @@
   overflow: auto;
 }
 
-@import "layout";
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
