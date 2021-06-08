@@ -1,5 +1,5 @@
 /* eslint-disable react/jsx-props-no-spreading */
-import React from "react";
+import React, { useMemo } from "react";
 import Select, {
   GroupTypeBase,
   OptionTypeBase,
@@ -53,6 +53,24 @@ const SelectController: React.FC<Props> = ({
   // const className = useStoreState((state) => state.controlles.className);
   const setClassName = useStoreActions((actions) => actions.controlles.setClassName);
 
+  const options = useMemo(() => {
+    if (typeof values[0] === "string") {
+      return (values as ReadonlyArray<string>).map((v) => {
+        let label = v;
+        if (ignorePrefix) {
+          label = v.startsWith("-")
+            ? `-${v.split("-").splice(2).join("-")}`
+            : v.split("-").splice(1).join("-");
+        }
+        return {
+          value: v,
+          label,
+        };
+      });
+    }
+    return values as ReadonlyArray<OptionType | GroupType>;
+  }, [ignorePrefix, values]);
+
   const MouseEnterOption = (props: OptionProps<OptionType, boolean, GroupType>) => {
     const {
       data: { label, value },
@@ -74,18 +92,7 @@ const SelectController: React.FC<Props> = ({
       isClearable
       // menuIsOpen
       isDisabled={isDisabled}
-      options={
-        typeof values[0] === "string"
-          ? (values as ReadonlyArray<string>).map((v) => ({
-              value: v,
-              label: ignorePrefix
-                ? v.startsWith("-")
-                  ? `-${v.split("-").splice(2).join("-")}`
-                  : v.split("-").splice(1).join("-")
-                : v,
-            }))
-          : (values as ReadonlyArray<OptionType | GroupType>)
-      }
+      options={options}
       value={property ? { value: property, label: property } : null}
       formatGroupLabel={formatGroupLabel}
       onChange={(ovalue, { action }) => {
