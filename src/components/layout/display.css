@@ -1,0 +1,13 @@
+.playground article {
+  background-color: red;
+}
+
+.playground article span {
+  color: white;
+  margin: 1px;
+}
+
+.playground article,
+.playground span {
+  border-radius: 7px;
+}

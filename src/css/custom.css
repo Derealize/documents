@@ -44,7 +44,8 @@
 
 .playground {
   resize: both;
-  overflow: auto;
+  overflow: visible;
+  min-height: 100px;
 }
 
 @tailwind base;

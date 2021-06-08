@@ -36,6 +36,7 @@ type Props = {
   placeholder: string;
   values: ReadonlyArray<string | OptionType | GroupType>;
   property: string | undefined;
+  ignorePrefix?: boolean;
   isDisabled?: boolean;
   onMouseEnter?: boolean;
   cleanPropertys?: Array<string>;
@@ -45,6 +46,7 @@ const SelectController: React.FC<Props> = ({
   placeholder,
   values,
   property,
+  ignorePrefix,
   isDisabled,
   onMouseEnter,
 }: Props): JSX.Element => {
@@ -76,9 +78,11 @@ const SelectController: React.FC<Props> = ({
         typeof values[0] === "string"
           ? (values as ReadonlyArray<string>).map((v) => ({
               value: v,
-              label: v.startsWith("-")
-                ? `-${v.split("-").splice(2).join("-")}`
-                : v.split("-").splice(1).join("-"),
+              label: ignorePrefix
+                ? v.startsWith("-")
+                  ? `-${v.split("-").splice(2).join("-")}`
+                  : v.split("-").splice(1).join("-")
+                : v,
             }))
           : (values as ReadonlyArray<OptionType | GroupType>)
       }
@@ -168,6 +172,7 @@ const SelectController: React.FC<Props> = ({
 };
 
 SelectController.defaultProps = {
+  ignorePrefix: true,
   isDisabled: false,
   onMouseEnter: true,
 };

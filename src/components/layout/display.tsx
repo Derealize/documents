@@ -1,7 +1,8 @@
 import React from "react";
+import { Flex, Box } from "@chakra-ui/react";
 import { useStoreActions, useStoreState } from "../../reduxStore";
 import SelectController from "../SelectController";
-import "../../css/layout.scss";
+import "./display.css";
 
 export const DisplayValues = [
   "block",
@@ -33,28 +34,34 @@ const Display: React.FC = (): JSX.Element => {
   const className = useStoreState<string>((state) => state.controlles.className);
 
   return (
-    <>
-      <SelectController
-        placeholder="display"
-        values={DisplayValues}
-        property={className}
-        onMouseEnter={false}
-      />
+    <Flex>
+      <Box flex="0 0 200px">
+        <SelectController
+          placeholder="select-display"
+          values={DisplayValues}
+          property={className}
+          ignorePrefix={false}
+          onMouseEnter={false}
+        />
+      </Box>
+      <Box flex="1 1 auto">
+        <div className="playground">
+          <article className={"m-5 p-3 " + className}>
+            <span>{"m-5 p-3 " + className}</span>
+            <span className="bg-black p-3">{"p-3"}</span>
+            <span className="bg-black p-3">{"p-3"}</span>
+            <span className="bg-black p-3">{"p-3"}</span>
+          </article>
 
-      <div className={`playground pg-display ${className}`}>
-        <article>
-          <span>First</span>
-          <span>Second</span>
-          <span>Third</span>
-        </article>
-
-        <article>
-          <span>First</span>
-          <span>Second</span>
-          <span>Third</span>
-        </article>
-      </div>
-    </>
+          <article className={"m-5 p-3 " + className}>
+            <span>{"m-5 p-3 " + className}</span>
+            <span className="bg-black p-3">{"p-3"}</span>
+            <span className="bg-black p-3">{"p-3"}</span>
+            <span className="bg-black p-3">{"p-3"}</span>
+          </article>
+        </div>
+      </Box>
+    </Flex>
   );
 };
 
