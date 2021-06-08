@@ -99,7 +99,9 @@ const SelectController: React.FC<Props> = ({
         if (action === "clear" && property) {
           setClassName("");
         } else if (action === "select-option") {
-          setClassName((ovalue as OptionType).value);
+          const value = (ovalue as OptionType).value;
+          setClassName(value);
+          location.hash = "#" + value;
         }
       }}
       className={styles.select}

@@ -35,7 +35,7 @@ const Display: React.FC = (): JSX.Element => {
 
   return (
     <Flex>
-      <Box flex="0 0 200px">
+      <Flex flex="0 0 200px" alignItems="center">
         <SelectController
           placeholder="select-display"
           values={DisplayValues}
@@ -43,7 +43,7 @@ const Display: React.FC = (): JSX.Element => {
           ignorePrefix={false}
           onMouseEnter={false}
         />
-      </Box>
+      </Flex>
       <Box flex="1 1 auto">
         <div className="playground">
           <article className={"m-5 p-3 " + className}>

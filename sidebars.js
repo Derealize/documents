@@ -59,7 +59,7 @@ module.exports = {
     },
     {
       type: "category",
-      label: "reference",
+      label: "Reference",
       items: [
         {
           type: "category",
