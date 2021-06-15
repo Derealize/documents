@@ -38,7 +38,7 @@ module.exports = {
           title: "Docs",
           items: [
             {
-              label: "Tutorial",
+              label: "Introduction",
               to: "/docs/intro",
             },
           ],
@@ -47,16 +47,16 @@ module.exports = {
           title: "Community",
           items: [
             {
-              label: "Stack Overflow",
-              href: "https://stackoverflow.com/questions/tagged/docusaurus",
+              label: "Twitter",
+              href: "https://twitter.com/Derealize3",
             },
             {
               label: "Discord",
-              href: "https://discordapp.com/invite/docusaurus",
+              href: "https://discord.gg/2sqy5QeZXK",
             },
             {
-              label: "Twitter",
-              href: "https://twitter.com/docusaurus",
+              label: "Stack Overflow",
+              href: "https://stackoverflow.com/questions/tagged/tailwind-css",
             },
           ],
         },
@@ -74,7 +74,7 @@ module.exports = {
           ],
         },
       ],
-      copyright: `Copyright © ${new Date().getFullYear()} Derealize, Inc. Built with Docusaurus.`,
+      copyright: `Copyright © ${new Date().getFullYear()} Derealize, Inc.`,
     },
     // https://docusaurus.io/docs/markdown-features/code-blocks#syntax-highlighting
     // prism: {
