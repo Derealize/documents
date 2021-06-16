@@ -3,16 +3,9 @@ import clsx from "clsx";
 import Layout from "@theme/Layout";
 import Link from "@docusaurus/Link";
 import useDocusaurusContext from "@docusaurus/useDocusaurusContext";
-import { OSPlatform, os } from "../utils/assest";
 import styles from "./index.module.css";
 import HomepageFeatures from "../components/HomepageFeatures";
-
-let filename = "";
-if (os === OSPlatform.MacOS) {
-  filename = "Derealize.dmg";
-} else if (os === OSPlatform.Windows) {
-  filename = "Derealize.exe";
-}
+import BrowserOnly from "@docusaurus/BrowserOnly";
 
 function HomepageHeader() {
   const { siteConfig } = useDocusaurusContext();
@@ -25,13 +18,24 @@ function HomepageHeader() {
           <Link className="button button--secondary button--lg" to="/docs/intro">
             Get Started
           </Link>
-          {!!filename && (
-            <a
-              className="button button--secondary button--lg ml-8"
-              href={`https://cdn.socode.pro/${filename}`}>
-              Download
-            </a>
-          )}
+          <BrowserOnly>
+            {() => {
+              let filename = "";
+              if (navigator.platform.startsWith("Win")) {
+                filename = "Derealize.exe";
+              } else if (navigator.platform.startsWith("Mac")) {
+                filename = "Derealize.dmg";
+              }
+              if (!filename) return <></>;
+              return (
+                <a
+                  className="button button--secondary button--lg ml-8"
+                  href={`https://cdn.socode.pro/${filename}`}>
+                  Download
+                </a>
+              );
+            }}
+          </BrowserOnly>
         </div>
       </div>
     </header>
