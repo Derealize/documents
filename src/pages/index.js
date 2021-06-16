@@ -43,9 +43,11 @@ function HomepageHeader() {
 }
 
 export default function Home() {
-  const { siteConfig } = useDocusaurusContext();
+  const {
+    siteConfig: { title, tagline },
+  } = useDocusaurusContext();
   return (
-    <Layout title={siteConfig.title + " | " + siteConfig.tagline} description="Tailwindcss Editor">
+    <Layout title={title + " | " + tagline} description={tagline}>
       <HomepageHeader />
       <main>
         <HomepageFeatures />
