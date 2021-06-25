@@ -77,10 +77,10 @@ module.exports = {
     "format": "prettier --write **/*.{js,jsx,ts,tsx} --config ./.prettierrc"
   },
   "derealize": {
-    "runScript": "develop",
+    "runScript": "develop",                     // Only required for Derealize Studio with node runtime
+    "port": 8000,                               // Only required for Derealize Studio with node runtime
     "formatScript": "format",
     "baseUrl": "http://localhost:8000",
-    "port": 8000,
     "pages": [
       "/",
       "/Welcome",
