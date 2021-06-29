@@ -31,7 +31,25 @@ function HomepageHeader() {
                 <a
                   className="button button--secondary button--lg ml-8"
                   href={`https://cdn.socode.pro/${filename}`}>
-                  Download
+                  Download Editor
+                </a>
+              );
+            }}
+          </BrowserOnly>
+          <BrowserOnly>
+            {() => {
+              let filename = "";
+              if (navigator.platform.startsWith("Win")) {
+                filename = "Derealize-with-runtime.exe";
+              } else if (navigator.platform.startsWith("Mac")) {
+                filename = "Derealize-with-runtime.dmg";
+              }
+              if (!filename) return <></>;
+              return (
+                <a
+                  className="button button--secondary button--lg ml-8"
+                  href={`https://cdn.socode.pro/${filename}`}>
+                  Download Studio (with node runtime)
                 </a>
               );
             }}
