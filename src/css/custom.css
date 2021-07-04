@@ -51,3 +51,7 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.ghost {
+  text-decoration: none !important;
+}

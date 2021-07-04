@@ -16,7 +16,7 @@ import Select, {
 import { CSSObject } from "@emotion/serialize";
 import { useStoreActions, useStoreState } from "../reduxStore";
 import styles from "./SelectController.module.scss";
-import theme from "../theme";
+import theme from "../chakra.theme";
 
 export interface OptionType extends OptionTypeBase {
   label: string;
