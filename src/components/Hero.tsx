@@ -16,6 +16,7 @@ import {
 } from "@chakra-ui/react";
 import Link from "@docusaurus/Link";
 import BrowserOnly from "@docusaurus/BrowserOnly";
+import { CgSoftwareDownload } from "react-icons/cg";
 
 export default function CallToActionWithVideo() {
   return (
@@ -25,9 +26,9 @@ export default function CallToActionWithVideo() {
         spacing={{ base: 8, md: 10 }}
         py={{ base: 20, md: 28 }}
         direction={{ base: "column", md: "row" }}>
-        <Stack flex={1} spacing={{ base: 5, md: 5 }}>
+        <Stack flex={1} spacing={5}>
           <Heading
-            lineHeight={1.1}
+            lineHeight={1.3}
             fontWeight={600}
             fontSize={{ base: "3xl", sm: "4xl", lg: "6xl" }}>
             <Text
@@ -44,16 +45,15 @@ export default function CallToActionWithVideo() {
                 bg: "#bae6fd",
                 zIndex: -1,
               }}>
-              Derealize
+              Derealize,
             </Text>
-            <br />
             <Text as={"span"} color={"red.400"}>
               TailwindCSS Editor
             </Text>
           </Heading>
           <Text color={"gray.500"}>Edit your web pages comfortably powered by tailwindcss!</Text>
           <Stack spacing={{ base: 4, sm: 6 }} direction={{ base: "column", sm: "row" }}>
-            <Link to="/docs/intro" className="ghost">
+            <Link to="/docs/guides/configuration" className="ghost">
               <Button
                 rounded={"full"}
                 size={"lg"}
@@ -83,8 +83,8 @@ export default function CallToActionWithVideo() {
                       size={"lg"}
                       fontWeight={"normal"}
                       px={6}
-                      leftIcon={<PlayIcon h={4} w={4} color={"gray.300"} />}>
-                      Download Editor
+                      leftIcon={<CgSoftwareDownload color={"gray.300"} />}>
+                      Editor
                     </Button>
                   </a>
                 );
@@ -106,8 +106,8 @@ export default function CallToActionWithVideo() {
                       size={"lg"}
                       fontWeight={"normal"}
                       px={6}
-                      leftIcon={<PlayIcon h={4} w={4} color={"gray.300"} />}>
-                      Download Studio (with node runtime)
+                      leftIcon={<CgSoftwareDownload color={"gray.300"} />}>
+                      Studio (with node runtime)
                     </Button>
                   </a>
                 );

@@ -1,48 +1,46 @@
-import React from 'react';
-import clsx from 'clsx';
-import styles from './HomepageFeatures.module.css';
+import React from "react";
+import clsx from "clsx";
+import styles from "./HomepageFeatures.module.css";
 
 const FeatureList = [
   {
-    title: 'Easy to Use',
-    Svg: require('../../static/img/undraw_docusaurus_mountain.svg').default,
-    description: (
-      <>
-        Docusaurus was designed from the ground up to be easily installed and
-        used to get your website up and running quickly.
-      </>
-    ),
+    title: "WYSIWYG Design",
+    Svg: require("../../static/img/undraw_mobile_prototyping_grmd.svg").default,
+    // description:
+    //   "所见即所得地设计您的网页，您输出的设计工作具备一切既有的前端工程性能优化。",
+    description:
+      "WYSIWYG design your web page, your output design work has all the existing front-end engineering performance optimization.",
   },
   {
-    title: 'Focus on What Matters',
-    Svg: require('../../static/img/undraw_docusaurus_tree.svg').default,
-    description: (
-      <>
-        Docusaurus lets you focus on your docs, and we&apos;ll do the chores. Go
-        ahead and move your docs into the <code>docs</code> directory.
-      </>
-    ),
+    title: "Adapt to multiple variant states",
+    Svg: require("../../static/img/undraw_processing_thoughts_d8ha.svg").default,
+    // description: '您可以构建完备的自适应web用户界面。包括Responsive，Hover, Focus, 和其它 States。'
+    description:
+      "You can build a complete adaptive web user interface. Including Responsive, Hover, Focus, and other States",
   },
   {
-    title: 'Powered by React',
-    Svg: require('../../static/img/undraw_docusaurus_react.svg').default,
-    description: (
+    title: (
       <>
-        Extend or customize your website layout by reusing React. Docusaurus can
-        be extended while reusing the same header and footer.
+        {"Powered by React/"}
+        <a href="https://github.com/benjamn/recast">recast</a>
       </>
     ),
+    Svg: require("../../static/img/undraw_react_y7wq.svg").default,
+    description: `
+      Derealize can modify your jsx code non-destructively, without destroying the existing code style.
+      Unless you specify the prettier configuration you want.
+    `,
   },
 ];
 
-function Feature({Svg, title, description}) {
+function Feature({ Svg, title, description }) {
   return (
-    <div className={clsx('col col--4')}>
+    <div className={clsx("col col--4")}>
       <div className="text--center">
         <Svg className={styles.featureSvg} alt={title} />
       </div>
       <div className="text--center padding-horiz--md">
-        <h3>{title}</h3>
+        <h3 className={styles.h3}>{title}</h3>
         <p>{description}</p>
       </div>
     </div>

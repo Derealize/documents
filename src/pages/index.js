@@ -6,12 +6,12 @@ import useDocusaurusContext from "@docusaurus/useDocusaurusContext";
 import styles from "./index.module.css";
 import HomepageFeatures from "../components/HomepageFeatures";
 import Hero from "../components/Hero";
-import BrowserOnly from "@docusaurus/BrowserOnly";
 
 export default function Home() {
   const {
     siteConfig: { title, tagline },
   } = useDocusaurusContext();
+
   return (
     <Layout title={title + " | " + tagline} description={tagline}>
       <Hero />

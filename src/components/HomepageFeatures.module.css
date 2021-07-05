@@ -10,4 +10,9 @@
 .featureSvg {
   height: 200px;
   width: 200px;
+  margin: 0 auto;
+}
+
+.h3 {
+  font-weight: 700;
 }
