@@ -1,4 +1,5 @@
-import React from "react";
+import React, { useEffect } from "react";
+import Plyr from "plyr";
 import {
   Container,
   Stack,
@@ -19,6 +20,10 @@ import BrowserOnly from "@docusaurus/BrowserOnly";
 import { CgSoftwareDownload } from "react-icons/cg";
 
 export default function CallToActionWithVideo() {
+  useEffect(() => {
+    const player = new Plyr("#player");
+  }, []);
+
   return (
     <Container maxW={"7xl"}>
       <Stack
@@ -115,7 +120,7 @@ export default function CallToActionWithVideo() {
             </BrowserOnly>
           </Stack>
         </Stack>
-        <Flex flex={1} justify={"center"} align={"center"} position={"relative"} w={"full"}>
+        <Flex flex={1.1} justify={"center"} align={"center"} position={"relative"} w={"full"}>
           <Blob
             w={"150%"}
             h={"150%"}
@@ -127,7 +132,7 @@ export default function CallToActionWithVideo() {
           />
           <Box
             position={"relative"}
-            height={"300px"}
+            // height={"300px"}
             rounded={"2xl"}
             boxShadow={"2xl"}
             width={"full"}
@@ -144,16 +149,9 @@ export default function CallToActionWithVideo() {
               top={"50%"}
               transform={"translateX(-50%) translateY(-50%)"}
             />
-            <Image
-              alt={"Hero Image"}
-              fit={"cover"}
-              align={"center"}
-              w={"100%"}
-              h={"100%"}
-              src={
-                "https://images.unsplash.com/photo-1499951360447-b19be8fe80f5?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&auto=format&fit=crop&w=800&q=80"
-              }
-            />
+            <video id="player" playsInline controls data-poster="/hero.png">
+              <source src="/hero.mp4" type="video/mp4" />
+            </video>
           </Box>
         </Flex>
       </Stack>
