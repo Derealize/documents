@@ -6,7 +6,7 @@ module.exports = {
   baseUrl: "/",
   onBrokenLinks: "throw",
   onBrokenMarkdownLinks: "warn",
-  favicon: "img/icon.svg",
+  favicon: "img/logo.svg",
   organizationName: "derealize", // Usually your GitHub org/user name.
   projectName: "derealize", // Usually your repo name.
   themeConfig: {
