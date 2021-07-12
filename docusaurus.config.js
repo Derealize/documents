@@ -14,7 +14,7 @@ module.exports = {
       title: "Derealize",
       logo: {
         alt: "Logo",
-        src: "img/icon.svg",
+        src: "img/logo.svg",
       },
       items: [
         {
