@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-import Plyr from "plyr";
 import {
   Container,
   Stack,
@@ -17,19 +16,25 @@ import {
 } from "@chakra-ui/react";
 import Link from "@docusaurus/Link";
 import BrowserOnly from "@docusaurus/BrowserOnly";
+import ExecutionEnvironment from "@docusaurus/ExecutionEnvironment";
 import { CgSoftwareDownload } from "react-icons/cg";
 
 export default function CallToActionWithVideo() {
   const [playing, setPlaying] = useState(false);
 
   useEffect(() => {
-    const player = new Plyr("#player");
-    player.on("playing", (event) => {
-      setPlaying(true);
-    });
-    player.on("ended", (event) => {
-      setPlaying(false);
-    });
+    if (!ExecutionEnvironment.canUseDOM) return;
+    const loadplyr = async () => {
+      const { default: Plyr } = await import("plyr");
+      const player = new Plyr("#player");
+      player.on("playing", (event) => {
+        setPlaying(true);
+      });
+      player.on("ended", (event) => {
+        setPlaying(false);
+      });
+    };
+    loadplyr();
   }, []);
 
   return (
