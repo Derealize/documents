@@ -1,6 +1,12 @@
 # Configuration your Next.js project
 
-### 0. [Install Tailwind CSS](https://tailwindcss.com/docs/guides/nextjs)
+### 0. [Import TailwindCSS to your project](https://tailwindcss.com/docs/guides/nextjs)
+
+:::caution
+
+Derealize strongly recommend to use [jit mode of tailwindcss](https://tailwindcss.com/docs/just-in-time-mode#enabling-jit-mode) to run your project, so you need import thetailwindcss v2.1+ version
+
+:::
 
 ### 1. Import derealize babel plugin
 
@@ -60,12 +66,12 @@ module.exports = {
     "dev": "next dev -p 3001",
     "build": "next build",
     "start": "next start",
-    "format": "prettier --write **/*.{js,jsx,ts,tsx} --config ./.prettierrc"
+    "format": "prettier --write **/*.{js,jsx,ts,tsx} --config ./.prettierrc"  // Optional
   },
   "derealize": {
     "runScript": "dev",                    // Only required for Derealize Studio with node runtime
     "port": 3001,                          // Only required for Derealize Studio with node runtime
-    "formatScript": "format",
+    "formatScript": "format",              // Optional
     "baseUrl": "http://localhost:3001",
     "pages": [
       "/",

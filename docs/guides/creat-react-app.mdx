@@ -1,8 +1,14 @@
 # Configuration your create-react-app project
 
-### 0. [Install Tailwind CSS](https://tailwindcss.com/docs/guides/create-react-app)
+## 0. [Import TailwindCSS to your project](https://tailwindcss.com/docs/guides/create-react-app)
 
-### 1. Import derealize babel plugin
+:::caution
+
+Derealize strongly recommend to use [jit mode of tailwindcss](https://tailwindcss.com/docs/just-in-time-mode#enabling-jit-mode) to run your project, so you need import thetailwindcss v2.1+ version
+
+:::
+
+## 1. Import derealize babel plugin
 
 ````mdx-code-block
 import Tabs from '@theme/Tabs';
@@ -44,7 +50,7 @@ module.exports = {
 };
 ```
 
-### 2. Config tailwindcss
+## 2. Config tailwindcss
 
 ```js title="./tailwind.config.js" {2,6}
 module.exports = {
@@ -58,7 +64,7 @@ module.exports = {
 }
 ```
 
-### 3. Config derealize
+## 3. Config derealize
 
 ```js title="./package.json" {7,9-22}
   ...
@@ -67,12 +73,12 @@ module.exports = {
     "build": "craco build",
     "test": "craco test --env=jsdom",
     "eject": "react-scripts eject",
-    "format": "prettier --write **/*.{js,jsx,ts,tsx} --config ./.prettierrc"
+    "format": "prettier --write **/*.{js,jsx,ts,tsx} --config ./.prettierrc"  // Optional
   },
   "derealize": {
     "runScript": "start",                  // Only required for Derealize Studio with node runtime
     "port": 3000,                          // Only required for Derealize Studio with node runtime
-    "formatScript": "format",
+    "formatScript": "format",              // Optional
     "baseUrl": "http://localhost:3000",
     "pages": [
       "/",
@@ -90,13 +96,9 @@ module.exports = {
 The npm script 'format' is not required, but we think you will definitely need it. to prevent improperly formatting your react code every time 'drealize' updates it.
 :::
 
-### 4. Handle the location change event
+## 4. Handle the location change event
 
-:::tip
-
-The following configuration is only required when you have imported [react-router](https://reactrouter.com/) or any other navigational components.
-
-:::
+This step is only required when you have imported [react-router](https://reactrouter.com/) or any other navigational components.
 
 ```js title="./src/App.tsx" {3-10,13}
 import { Switch, useLocation } from "react-router-dom";

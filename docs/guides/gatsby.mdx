@@ -1,6 +1,12 @@
 # Configuration your Gatsby project
 
-### 0. [Install Tailwind CSS](https://tailwindcss.com/docs/guides/gatsby)
+### 0. [Import TailwindCSS to your project](https://tailwindcss.com/docs/guides/gatsby)
+
+:::caution
+
+Derealize strongly recommend to use [jit mode of tailwindcss](https://tailwindcss.com/docs/just-in-time-mode#enabling-jit-mode) to run your project, so you need import thetailwindcss v2.1+ version
+
+:::
 
 ### 1. Import derealize babel plugin
 
@@ -74,12 +80,12 @@ module.exports = {
     "build": "gatsby build",
     "serve": "gatsby serve",
     "clean": "gatsby clean",
-    "format": "prettier --write **/*.{js,jsx,ts,tsx} --config ./.prettierrc"
+    "format": "prettier --write **/*.{js,jsx,ts,tsx} --config ./.prettierrc"  // Optional
   },
   "derealize": {
     "runScript": "develop",                     // Only required for Derealize Studio with node runtime
     "port": 8000,                               // Only required for Derealize Studio with node runtime
-    "formatScript": "format",
+    "formatScript": "format",                   // Optional
     "baseUrl": "http://localhost:8000",
     "pages": [
       "/",
