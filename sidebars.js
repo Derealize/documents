@@ -50,16 +50,11 @@ module.exports = {
             },
           ],
         },
-        {
-          type: "doc",
-          id: "guides/import",
-          label: "Import/Start",
-        },
-        {
-          type: "doc",
-          id: "guides/import_studio",
-          label: "Import/Start (Studio)",
-        },
+        // {
+        //   type: "doc",
+        //   id: "guides/import",
+        //   label: "Import/Start",
+        // },
       ],
     },
     // {

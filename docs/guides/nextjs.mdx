@@ -119,8 +119,36 @@ function MyApp({ Component, pageProps }) {
 export default MyApp;
 ```
 
-That's enough! [start enjoying](./import) the derealize application.
+That's enough!
 
 :::tip
-If the installation process is not successful, you can refer to our [template](https://github.com/Derealize/nextjs-template) project
+If the configuration process is not successful, you can refer to our [template](https://github.com/Derealize/nextjs-template) project
 :::
+
+### Now you can import/start project in Derealize Editor or Studio:
+
+```mdx-code-block
+<Tabs
+  defaultValue="editor"
+  values={[
+    { label: 'Derealize Editor', value: 'editor' },
+    { label: 'Derealize Studio', value: 'studio' }
+]}>
+  <TabItem value="editor">
+
+  1 Import Project to Derealize Editor App.
+
+  2 Command 'yarn dev' to start project.
+
+  3 Open the project in Derealize Editor App.
+
+  </TabItem>
+  <TabItem value="studio">
+
+  1 Import Project to Derealize Editor App. Carefully configure the git branch you want Derealize Studio to manage.
+
+  2 Open & Start the project directly in Derealize Studio App.
+
+  </TabItem>
+</Tabs>
+```
