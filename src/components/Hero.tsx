@@ -19,6 +19,8 @@ import BrowserOnly from "@docusaurus/BrowserOnly";
 import ExecutionEnvironment from "@docusaurus/ExecutionEnvironment";
 import { CgSoftwareDownload } from "react-icons/cg";
 
+const isDarwin = navigator.platform.startsWith("Mac");
+
 export default function CallToActionWithVideo() {
   const [playing, setPlaying] = useState(false);
 
@@ -85,22 +87,17 @@ export default function CallToActionWithVideo() {
           <Stack spacing={{ base: 4, sm: 6 }} direction={{ base: "column", sm: "row" }}>
             <BrowserOnly>
               {() => {
-                let filename = "";
-                if (navigator.platform.startsWith("Win")) {
-                  filename = "Derealize.exe";
-                } else if (navigator.platform.startsWith("Mac")) {
-                  filename = "Derealize.dmg";
-                }
-                if (!filename) return <></>;
                 return (
-                  <a className="ghost" href={`https://cdn.socode.pro/${filename}`}>
+                  <a
+                    className="ghost"
+                    href={`https://cdn.socode.pro/Derealize.${isDarwin ? "dmg" : "exe"}`}>
                     <Button
                       rounded={"full"}
                       size={"lg"}
                       fontWeight={"normal"}
                       px={6}
                       leftIcon={<CgSoftwareDownload color={"gray.300"} />}>
-                      Editor
+                      Editor (recommend)
                     </Button>
                   </a>
                 );
@@ -108,15 +105,12 @@ export default function CallToActionWithVideo() {
             </BrowserOnly>
             <BrowserOnly>
               {() => {
-                let filename = "";
-                if (navigator.platform.startsWith("Win")) {
-                  filename = "Derealize-with-runtime.exe";
-                } else if (navigator.platform.startsWith("Mac")) {
-                  filename = "Derealize-with-runtime.dmg";
-                }
-                if (!filename) return <></>;
                 return (
-                  <a className="ghost" href={`https://cdn.socode.pro/${filename}`}>
+                  <a
+                    className="ghost"
+                    href={`https://cdn.socode.pro/Derealize-with-runtime.${
+                      isDarwin ? "dmg" : "exe"
+                    }`}>
                     <Button
                       rounded={"full"}
                       size={"lg"}
