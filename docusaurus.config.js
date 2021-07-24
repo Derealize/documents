@@ -63,6 +63,10 @@ module.exports = {
         {
           title: "More",
           items: [
+            {
+              label: "Collect feedback",
+              to: "https://derealize-fider.herokuapp.com/",
+            },
             // {
             //   label: "Blog",
             //   to: "/blog",
