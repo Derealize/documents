@@ -19,8 +19,6 @@ import BrowserOnly from "@docusaurus/BrowserOnly";
 import ExecutionEnvironment from "@docusaurus/ExecutionEnvironment";
 import { CgSoftwareDownload } from "react-icons/cg";
 
-const isDarwin = navigator.platform.startsWith("Mac");
-
 export default function CallToActionWithVideo() {
   const [playing, setPlaying] = useState(false);
 
@@ -87,6 +85,7 @@ export default function CallToActionWithVideo() {
           <Stack spacing={{ base: 4, sm: 6 }} direction={{ base: "column", sm: "row" }}>
             <BrowserOnly>
               {() => {
+                const isDarwin = navigator.platform.startsWith("Mac");
                 return (
                   <a
                     className="ghost"
@@ -105,6 +104,7 @@ export default function CallToActionWithVideo() {
             </BrowserOnly>
             <BrowserOnly>
               {() => {
+                const isDarwin = navigator.platform.startsWith("Mac");
                 return (
                   <a
                     className="ghost"
