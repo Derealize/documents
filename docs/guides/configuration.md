@@ -14,15 +14,15 @@ import CraLogo from '@site/static/img/cra.svg';
 import GatsbyLogo from '@site/static/img/gatsby.svg';
 
 <div className="frameworks">
-  <a className="framework" href='nextjs'>
+  <a className="framework" href='/docs/guides/nextjs'>
     <NextjsLogo title="Next.js" className="logo" />
     <p className="framework-name">Next.js</p>
   </a>
-  <a className="framework" href='creat-react-app'>
+  <a className="framework" href='/docs/guides/creat-react-app'>
     <CraLogo title="Create React App" className="logo" />
     <p className="framework-name">Create React App</p>
   </a>
-  <a className="framework" href='gatsby'>
+  <a className="framework" href='/docs/guides/gatsby'>
     <GatsbyLogo title="Gatsby" className="logo" />
     <p className="framework-name">Gatsby</p>
   </a>
