@@ -108,9 +108,7 @@ export default function CallToActionWithVideo() {
                 return (
                   <a
                     className="ghost"
-                    href={`https://cdn.socode.pro/Derealize-with-runtime.${
-                      isDarwin ? "dmg" : "exe"
-                    }`}>
+                    href={`https://cdn.socode.pro/Derealize-studio.${isDarwin ? "dmg" : "exe"}`}>
                     <Button
                       rounded={"full"}
                       size={"lg"}
