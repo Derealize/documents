@@ -19,6 +19,32 @@ import BrowserOnly from "@docusaurus/BrowserOnly";
 import ExecutionEnvironment from "@docusaurus/ExecutionEnvironment";
 import { CgSoftwareDownload } from "react-icons/cg";
 
+const fetchVersion = async () => {
+  const isDarwin = navigator.platform.startsWith("Mac");
+
+  const resp = await fetch("https://cdn.socode.pro/derealize-versions.json", {
+    headers: {
+      "content-type": "application/json",
+    },
+  });
+  if (resp.ok) {
+    const matrix = await resp.json();
+    return {
+      standard: `https://cdn.socode.pro/Derealize-${isDarwin ? matrix.mac : matrix.win}.${
+        isDarwin ? "dmg" : "exe"
+      }`,
+      studio: `https://cdn.socode.pro/Derealize-studio-${
+        isDarwin ? matrix.mac_studio : matrix.win_studio
+      }.${isDarwin ? "dmg" : "exe"}`,
+    };
+  } else {
+    return {
+      standard: `https://cdn.socode.pro/Derealize.${isDarwin ? "dmg" : "exe"}`,
+      studio: `https://cdn.socode.pro/Derealize-studio.${isDarwin ? "dmg" : "exe"}`,
+    };
+  }
+};
+
 export default function CallToActionWithVideo() {
   const [playing, setPlaying] = useState(false);
 
@@ -85,39 +111,39 @@ export default function CallToActionWithVideo() {
           <Stack spacing={{ base: 4, sm: 6 }} direction={{ base: "column", sm: "row" }}>
             <BrowserOnly>
               {() => {
-                const isDarwin = navigator.platform.startsWith("Mac");
+                const [standard, setStandard] = useState<string>();
+                const [studio, setStudio] = useState<string>();
+
+                useEffect(() => {
+                  fetchVersion().then((result) => {
+                    setStandard(result.standard);
+                    setStudio(result.studio);
+                  });
+                }, []);
+
                 return (
-                  <a
-                    className="ghost"
-                    href={`https://cdn.socode.pro/Derealize.${isDarwin ? "dmg" : "exe"}`}>
-                    <Button
-                      rounded={"full"}
-                      size={"lg"}
-                      fontWeight={"normal"}
-                      px={6}
-                      leftIcon={<CgSoftwareDownload color={"gray.300"} />}>
-                      Editor (recommend)
-                    </Button>
-                  </a>
-                );
-              }}
-            </BrowserOnly>
-            <BrowserOnly>
-              {() => {
-                const isDarwin = navigator.platform.startsWith("Mac");
-                return (
-                  <a
-                    className="ghost"
-                    href={`https://cdn.socode.pro/Derealize-studio.${isDarwin ? "dmg" : "exe"}`}>
-                    <Button
-                      rounded={"full"}
-                      size={"lg"}
-                      fontWeight={"normal"}
-                      px={6}
-                      leftIcon={<CgSoftwareDownload color={"gray.300"} />}>
-                      Studio (with node runtime)
-                    </Button>
-                  </a>
+                  <>
+                    <a className="ghost" href={standard}>
+                      <Button
+                        rounded={"full"}
+                        size={"lg"}
+                        fontWeight={"normal"}
+                        px={6}
+                        leftIcon={<CgSoftwareDownload color={"gray.300"} />}>
+                        Editor (recommend)
+                      </Button>
+                    </a>
+                    <a className="ghost" href={studio}>
+                      <Button
+                        rounded={"full"}
+                        size={"lg"}
+                        fontWeight={"normal"}
+                        px={6}
+                        leftIcon={<CgSoftwareDownload color={"gray.300"} />}>
+                        Studio (with node runtime)
+                      </Button>
+                    </a>
+                  </>
                 );
               }}
             </BrowserOnly>
