@@ -67,6 +67,12 @@ module.exports = {
               label: "Collect feedback",
               to: "https://derealize-fider.herokuapp.com/",
             },
+            {
+              //Renders the html pass-through instead of a simple link
+              html: `
+                <a href="https://www.producthunt.com/posts/derealize?utm_source=badge-featured&utm_medium=badge&utm_souce=badge-derealize" target="_blank"><img src="https://api.producthunt.com/widgets/embed-image/v1/featured.svg?post_id=306558&theme=light" alt="Derealize - tailwindcss editor | Product Hunt" style="width: 250px; height: 54px;" width="250" height="54" /></a>
+              `,
+            },
             // {
             //   label: "Blog",
             //   to: "/blog",
