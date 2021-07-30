@@ -91,7 +91,7 @@ module.exports = {
     //   additionalLanguages: ["php", "ruby"],
     // },
   },
-  plugins: ["docusaurus-plugin-sass", "@docusaurus/plugin-google-gtag", "tailwindcss-loader"],
+  plugins: ["docusaurus-plugin-sass", "tailwindcss-loader"],
   presets: [
     [
       "@docusaurus/preset-classic",
