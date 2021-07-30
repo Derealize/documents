@@ -22,7 +22,7 @@ import { CgSoftwareDownload } from "react-icons/cg";
 const fetchVersion = async () => {
   const isDarwin = navigator.platform.startsWith("Mac");
 
-  const resp = await fetch("https://cdn.socode.pro/derealize-versions.json", {
+  const resp = await fetch("https://cdn.socode.pro/latest.json", {
     headers: {
       "content-type": "application/json",
     },
