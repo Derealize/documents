@@ -80,12 +80,18 @@ module.exports = {
       ],
       copyright: `Copyright © ${new Date().getFullYear()} Derealize, Inc.`,
     },
+    gtag: {
+      // You can also use your "G-" Measurement ID here.
+      trackingID: "G-PQXFMPV0VZ",
+      // Optional fields.
+      anonymizeIP: false, // Should IPs be anonymized?
+    },
     // https://docusaurus.io/docs/markdown-features/code-blocks#syntax-highlighting
     // prism: {
     //   additionalLanguages: ["php", "ruby"],
     // },
   },
-  plugins: ["docusaurus-plugin-sass", "tailwindcss-loader"],
+  plugins: ["docusaurus-plugin-sass", "@docusaurus/plugin-google-gtag", "tailwindcss-loader"],
   presets: [
     [
       "@docusaurus/preset-classic",
