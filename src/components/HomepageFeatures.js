@@ -4,7 +4,7 @@ import styles from "./HomepageFeatures.module.css";
 
 const FeatureList = [
   {
-    title: "For front-end project",
+    title: "Edit front-end project",
     Svg: require("../../static/img/undraw_mobile_prototyping_grmd.svg").default,
     // description:
     //   "所见即所得地设计您的网页，您输出的设计工作具备一切既有的前端工程性能优化。",
