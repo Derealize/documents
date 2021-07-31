@@ -41,32 +41,40 @@ module.exports = {
               label: "Introduction",
               to: "/docs/intro",
             },
+            {
+              label: "Next.js",
+              to: "/docs/guides/nextjs",
+            },
+            {
+              label: "Create React App",
+              to: "/docs/guides/creat-react-app",
+            },
+            {
+              label: "Gatsby",
+              to: "/docs/guides/gatsby",
+            },
           ],
         },
         {
           title: "Community",
           items: [
             {
-              label: "Twitter",
-              href: "https://twitter.com/Derealize3",
+              label: "Feedback",
+              to: "https://derealize-fider.herokuapp.com/",
             },
             {
               label: "Discord",
               href: "https://discord.gg/2sqy5QeZXK",
             },
             {
-              label: "Stack Overflow",
-              href: "https://stackoverflow.com/questions/tagged/tailwind-css",
+              label: "Twitter",
+              href: "https://twitter.com/Derealize3",
             },
           ],
         },
         {
           title: "More",
           items: [
-            {
-              label: "Collect feedback",
-              to: "https://derealize-fider.herokuapp.com/",
-            },
             {
               label: "Alternative download url",
               to: "https://github.com/zicjin/derealize.assets/releases",

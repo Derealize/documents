@@ -13,7 +13,7 @@ export default function Home() {
   } = useDocusaurusContext();
 
   return (
-    <Layout title={title + " | " + tagline} description={tagline}>
+    <Layout description={tagline}>
       <Hero />
       <main>
         <HomepageFeatures />
