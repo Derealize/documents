@@ -93,7 +93,9 @@ export default function CallToActionWithVideo() {
               TailwindCSS Editor
             </Text>
           </Heading>
-          <Text color={"gray.500"}>WYSIWYG design your web pages powered by tailwindcss!</Text>
+          <Text color={"gray.500"}>
+            for the complete, actual running front-end project (not the html module)
+          </Text>
           <Stack spacing={{ base: 4, sm: 6 }} direction={{ base: "column", sm: "row" }}>
             <Link to="/docs/guides/configuration" className="ghost">
               <Button
