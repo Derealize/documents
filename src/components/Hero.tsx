@@ -170,8 +170,8 @@ export default function CallToActionWithVideo() {
               id="player"
               playsInline
               controls
-              data-poster="https://assets.derealize.com/hero.png">
-              <source src="https://assets.derealize.com/hero.mp4" type="video/mp4" />
+              data-poster="https://assets-derealize-com.onrender.com/hero.png">
+              <source src="https://assets-derealize-com.onrender.com/hero.mp4" type="video/mp4" />
             </video>
           </Box>
         </Flex>
