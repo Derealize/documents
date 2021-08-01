@@ -94,7 +94,7 @@ export default function CallToActionWithVideo() {
             </Text>
           </Heading>
           <Text color={"gray.500"}>
-            for the complete, actual running front-end project (not the html module)
+            play with the development running front-end project (not html module)
           </Text>
           <Stack spacing={{ base: 4, sm: 6 }} direction={{ base: "column", sm: "row" }}>
             <Link to="/docs/guides/configuration" className="ghost">

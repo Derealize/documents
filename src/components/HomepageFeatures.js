@@ -4,14 +4,14 @@ import styles from "./HomepageFeatures.module.css";
 
 const FeatureList = [
   {
-    title: "Edit front-end project",
+    title: "Play with front-end project",
     Svg: require("../../static/img/undraw_mobile_prototyping_grmd.svg").default,
     // description:
     //   "所见即所得地设计您的网页，您输出的设计工作具备一切既有的前端工程性能优化。",
     // description:
     //   "WYSIWYG design your web page, your output design work has all the existing front-end engineering performance optimization.",
     description:
-      "edit the overall UI of a front-end project (not html module). The combination and nesting of react modules in a front-end project may be very complicated and uncertain. This editor saves you the work of moving html modules to actual front-end projects. ",
+      "play with the development running front-end project (not html module). The combination and nesting of react modules in a front-end project may be very complicated and uncertain. We saves you the work of moving html modules to actual front-end projects.",
     //This editor for front-end projects instead of html modules smooths out this uncertainty and save...
   },
   {
