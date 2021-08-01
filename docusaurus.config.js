@@ -60,7 +60,7 @@ module.exports = {
           items: [
             {
               label: "Feedback",
-              to: "https://derealize-fider.herokuapp.com/",
+              to: "https://derealize-fider.herokuapp.com",
             },
             {
               label: "Discord",
@@ -75,6 +75,10 @@ module.exports = {
         {
           title: "More",
           items: [
+            {
+              label: "Contact Us",
+              to: "mailto:elliotreborn@gmail.com",
+            },
             {
               label: "Alternative download url",
               to: "https://github.com/zicjin/derealize.assets/releases",
