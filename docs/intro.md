@@ -1,3 +1,5 @@
 # Introduction
 
-Derealize is a UI Design Tool powered by <a href="https://tailwindcss.com/">Tailwindcss</a>
+Derealize is a TailwindCSS Editor play with the development running front-end project.
+
+Traditional tailwindcss editors (e.g. [windicss.org/play](https://windicss.org/play.html)) is editing a separate html component separated from the front-end project. After each edit, you need to manually synchronize the html component to your front-end project. The modular nesting of front-end projects may be very complicated and uncertain. Until I saw [ui-devtools](https://www.ui-devtools.com) (thanks for the inspiration it gave). Unfortunately, its mode of work limits UI design to the hands of front-end engineers (can't avoid some professional command line knowledge). So I thought that if I can integrate the node/git environment in the electron application, we can allow people who are not familiar with any code knowledge to edit the UI of the real front-end project with the help of tailwindcss and access the CI/CD pipeline! It seems that this goal is a bit whimsical, I hope we can approach it.
