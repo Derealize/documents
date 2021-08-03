@@ -24,11 +24,22 @@ module.exports = {
           label: "Documents",
         },
         // { to: "/blog", label: "Blog", position: "left" },
-        // {
-        //   href: 'https://github.com/facebook/docusaurus',
-        //   label: 'GitHub',
-        //   position: 'right',
-        // },
+        {
+          href: "https://derealize-fider.herokuapp.com",
+          label: "FeatureVoting",
+          position: "left",
+        },
+        {
+          href: "https://discord.gg/2sqy5QeZXK",
+          label: "Discord",
+          position: "left",
+        },
+        {
+          href: "https://github.com/Derealize/derealize",
+          position: "right",
+          className: "header-github-link",
+          "aria-label": "GitHub",
+        },
       ],
     },
     footer: {
@@ -76,12 +87,12 @@ module.exports = {
           title: "More",
           items: [
             {
-              label: "Contact Us",
-              to: "mailto:elliotreborn@gmail.com",
+              label: "Github",
+              to: "https://github.com/Derealize/derealize",
             },
             {
-              label: "Alternative download url",
-              to: "https://github.com/zicjin/derealize.assets/releases",
+              label: "Contact Us",
+              to: "mailto:elliotreborn@gmail.com",
             },
             {
               //Renders the html pass-through instead of a simple link

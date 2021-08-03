@@ -96,19 +96,33 @@ export default function CallToActionWithVideo() {
           <Text color={"gray.500"}>
             play with the development running front-end project (not html module)
           </Text>
-          <Stack spacing={{ base: 4, sm: 6 }} direction={{ base: "column", sm: "row" }}>
+          <Stack
+            spacing={{ base: 4, sm: 6 }}
+            direction={{ base: "column", sm: "row" }}
+            alignItems="center">
             <Link to="/docs/guides/configuration" className="ghost">
               <Button
+                variant="outline"
                 rounded={"full"}
                 size={"lg"}
                 fontWeight={"normal"}
                 px={6}
                 colorScheme={"red"}
-                bg={"red.400"}
-                _hover={{ bg: "red.500" }}>
+                borderWidth={4}
+                borderColor={"red.400"}
+                // bg={"red.400"}
+                // _hover={{ bg: "red.500" }}
+              >
                 Get started
               </Button>
             </Link>
+            <iframe
+              src="https://ghbtns.com/github-btn.html?user=Derealize&repo=derealize&type=star&count=true&size=large"
+              frameBorder="0"
+              scrolling="0"
+              width="170"
+              height="30"
+              title="GitHub"></iframe>
           </Stack>
           <Stack spacing={{ base: 4, sm: 6 }} direction={{ base: "column", sm: "row" }}>
             <BrowserOnly>
