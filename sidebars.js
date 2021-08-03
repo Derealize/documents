@@ -20,6 +20,11 @@ module.exports = {
       id: "intro",
     },
     {
+      type: "doc",
+      label: "Editor or Studio?",
+      id: "modes",
+    },
+    {
       type: "category",
       label: "Getting Started",
       collapsed: false,
