@@ -79,7 +79,7 @@ module.exports = {
             },
             {
               label: "Twitter",
-              href: "https://twitter.com/Derealize3",
+              href: "https://twitter.com/elliot21678048",
             },
           ],
         },
