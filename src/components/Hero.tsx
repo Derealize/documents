@@ -99,7 +99,7 @@ export default function CallToActionWithVideo() {
           <Stack
             spacing={{ base: 4, sm: 6 }}
             direction={{ base: "column", sm: "row" }}
-            alignItems="center">
+            alignItems={{ base: "flex-start", sm: "center" }}>
             <Link to="/docs/guides/configuration" className="ghost">
               <Button
                 variant="outline"
