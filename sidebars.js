@@ -25,6 +25,11 @@ module.exports = {
       id: "modes",
     },
     {
+      type: "doc",
+      label: "Why babel?",
+      id: "why-babel",
+    },
+    {
       type: "category",
       label: "Getting Started",
       collapsed: false,
@@ -36,20 +41,20 @@ module.exports = {
         },
         {
           type: "category",
-          label: "Frameworks",
+          label: "Adaptation Frameworks",
           items: [
             {
-              type: "ref",
+              type: "doc",
               label: "creat-react-app",
               id: "guides/creat-react-app",
             },
             {
-              type: "ref",
+              type: "doc",
               label: "nextjs",
               id: "guides/nextjs",
             },
             {
-              type: "ref",
+              type: "doc",
               label: "gatsby",
               id: "guides/gatsby",
             },

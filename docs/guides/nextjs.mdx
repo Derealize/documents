@@ -1,6 +1,12 @@
 # Configuration your Next.js project
 
-### 0. [Import TailwindCSS to your project](https://tailwindcss.com/docs/guides/nextjs)
+## 0. Import TailwindCSS to your project
+
+<p>
+  <a href="https://tailwindcss.com/docs/guides/nextjs" target="_blank">
+    please check the tailwindcss documentation
+  </a>
+</p>
 
 :::caution
 
@@ -8,7 +14,9 @@ Derealize strongly recommend to use [jit mode of tailwindcss](https://tailwindcs
 
 :::
 
-### 1. Import derealize babel plugin
+## 1. Import derealize babel plugin
+
+[If you want to know why?](/docs/why-babel)
 
 ````mdx-code-block
 import Tabs from '@theme/Tabs';
@@ -44,7 +52,7 @@ import TabItem from '@theme/TabItem';
 }
 ```
 
-### 2. Config tailwindcss
+## 2. Config tailwindcss
 
 ```js title="./tailwind.config.js" {2,6}
 module.exports = {
@@ -58,7 +66,7 @@ module.exports = {
 }
 ```
 
-### 3. Config derealize
+## 3. Config derealize
 
 ```js title="./package.json" {6,8-21}
   ...
@@ -89,7 +97,7 @@ module.exports = {
 The npm script 'format' is not required, but we think you will definitely need it. to prevent improperly formatting your react code every time 'drealize' updates it.
 :::
 
-### 4. Handle the routeChangeComplete event
+## 4. Handle the routeChangeComplete event
 
 ```js title="./pages/_app.js" {8-20}
 import { useEffect } from "react";
@@ -125,7 +133,7 @@ That's enough!
 If the configuration process is not successful, you can refer to our [template](https://github.com/Derealize/nextjs-template) project
 :::
 
-### Now you can import/start project in Derealize Editor or Studio:
+## Now you can import/start project in Derealize Editor or Studio:
 
 ```mdx-code-block
 <Tabs
