@@ -111,7 +111,7 @@ module.exports = {
           ],
         },
       ],
-      copyright: `Copyright © ${new Date().getFullYear()} Derealize, Inc.`,
+      copyright: `Copyright © ${new Date().getFullYear()} MIT License.`,
     },
     gtag: {
       // You can also use your "G-" Measurement ID here.
