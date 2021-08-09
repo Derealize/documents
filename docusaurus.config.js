@@ -26,7 +26,7 @@ module.exports = {
         // { to: "/blog", label: "Blog", position: "left" },
         {
           href: "https://derealize-fider.herokuapp.com",
-          label: "Feature Voting",
+          label: "Feature Requests",
           position: "left",
         },
         {
@@ -70,7 +70,7 @@ module.exports = {
           title: "Community",
           items: [
             {
-              label: "Feature Voting",
+              label: "Feature Requests",
               to: "https://derealize-fider.herokuapp.com",
             },
             {
